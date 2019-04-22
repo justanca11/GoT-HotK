@@ -1,8 +1,23 @@
 package components.elements.board;
 
+import java.util.ArrayList;
+
+import components.elements.cards.Card;
+
 public class Board {
 	private int rows;
 	private int columns;
+	private Card[][] cards;
+	
+	
+
+	public Card[][] getCards() {
+		return cards;
+	}
+
+	public void setCards(Card[][] cards) {
+		this.cards = cards;
+	}
 
 	public int getRows() {
 		return rows;

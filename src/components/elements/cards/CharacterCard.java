@@ -23,6 +23,6 @@ public class CharacterCard extends Card implements Arrangeable {
 
 	@Override
 	public String toString() {
-		return super.getName() + " " + house.toString();
+		return super.getName() + " " + house.toString() + " is at position " + "(" + getX() + "," + getY() + ")";
 	}
 }

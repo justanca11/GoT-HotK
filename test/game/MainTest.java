@@ -9,6 +9,7 @@ import org.junit.Test;
 import components.elements.House;
 import components.elements.banners.BannerToken;
 import components.elements.board.Board;
+import components.elements.cards.Card;
 import components.elements.decks.HouseDeck;
 
 public class MainTest {
@@ -44,13 +45,16 @@ public class MainTest {
 				assertEquals(2, hdi.getCards().size());
 			}
 		}
-		
+
 		// Check board size
 		Board b = Main.createBoard();
 		assertEquals(6, b.getRows());
 		assertEquals(6, b.getColumns());
-		
+
 		// Check board size and number of character cards + Varys card add up
 		assertEquals(b.getRows() * b.getColumns(), Main.createCharacterCards().size() + 1);
+
+		// TODO: Check that the shuffle is a decent shuffle. But the method
+		// probably needs improvement anyhow ¯\_(ツ)_/¯
 	}
 }
