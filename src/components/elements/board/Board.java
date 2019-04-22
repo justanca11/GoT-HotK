@@ -1,15 +1,17 @@
 package components.elements.board;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
+import components.elements.House;
 import components.elements.cards.Card;
+import components.elements.cards.CharacterCard;
+import components.elements.cards.VarysCard;
 
 public class Board {
 	private int rows;
 	private int columns;
 	private Card[][] cards;
-	
-	
 
 	public Card[][] getCards() {
 		return cards;
@@ -23,17 +25,17 @@ public class Board {
 		return rows;
 	}
 
-	public void setRows(int rows) {
-		this.rows = rows;
-	}
+	/*
+	 * public void setRows(int rows) { this.rows = rows; }
+	 */
 
 	public int getColumns() {
 		return columns;
 	}
 
-	public void setColumns(int columns) {
-		this.columns = columns;
-	}
+	/*
+	 * public void setColumns(int columns) { this.columns = columns; }
+	 */
 
 	public Board(int rows, int columns) {
 		super();
@@ -41,8 +43,84 @@ public class Board {
 		this.columns = columns;
 	}
 
-	@Override
-	public String toString() {
-		return "Board size: " + rows + " x " + columns + ".";
+	/*
+	 * @Override public String toString() { return "Board size: " + rows + " x " +
+	 * columns + "."; }
+	 */
+
+	public void initializeBoard() {
+		ArrayList<Card> cards = createBoardCards();
+		Collections.shuffle(cards);
+		this.cards = new Card[this.rows][this.columns];
+
+		int row = 0, col = 0;
+		for (int i = 0; i < cards.size(); i++) {
+			cards.get(i).setX(row);
+			cards.get(i).setY(col);
+			this.cards[row][col] = cards.get(i);
+			col++;
+			if (col == 6) {
+				col = 0;
+				row++;
+			}
+		}
+	}
+
+	ArrayList<Card> createBoardCards() {
+		ArrayList<Card> allBoardCards = new ArrayList<Card>(36);
+
+		// 8 Stark cards
+		allBoardCards.add(new CharacterCard(House.STARK, "Arya"));
+		allBoardCards.add(new CharacterCard(House.STARK, "Bran"));
+		allBoardCards.add(new CharacterCard(House.STARK, "Carlyn"));
+		allBoardCards.add(new CharacterCard(House.STARK, "Eddard"));
+		allBoardCards.add(new CharacterCard(House.STARK, "Lyanna"));
+		allBoardCards.add(new CharacterCard(House.STARK, "Rickon"));
+		allBoardCards.add(new CharacterCard(House.STARK, "Robb"));
+		allBoardCards.add(new CharacterCard(House.STARK, "Sansa"));
+
+		// 7 Greyjoy cards
+		allBoardCards.add(new CharacterCard(House.GREYJOY, "Aeron"));
+		allBoardCards.add(new CharacterCard(House.GREYJOY, "Asha"));
+		allBoardCards.add(new CharacterCard(House.GREYJOY, "Balon"));
+		allBoardCards.add(new CharacterCard(House.GREYJOY, "Euron"));
+		allBoardCards.add(new CharacterCard(House.GREYJOY, "Rodrik"));
+		allBoardCards.add(new CharacterCard(House.GREYJOY, "Theon"));
+		allBoardCards.add(new CharacterCard(House.GREYJOY, "Victarion"));
+
+		// 6 Lannister cards
+		allBoardCards.add(new CharacterCard(House.LANNISTER, "Cersei"));
+		allBoardCards.add(new CharacterCard(House.LANNISTER, "Jaime"));
+		allBoardCards.add(new CharacterCard(House.LANNISTER, "Joffrey"));
+		allBoardCards.add(new CharacterCard(House.LANNISTER, "Kevan"));
+		allBoardCards.add(new CharacterCard(House.LANNISTER, "Tyrion"));
+		allBoardCards.add(new CharacterCard(House.LANNISTER, "Tywin"));
+
+		// 5 Targaryen cards
+		allBoardCards.add(new CharacterCard(House.TARGARYEN, "Aegon 1"));
+		allBoardCards.add(new CharacterCard(House.TARGARYEN, "Aerys"));
+		allBoardCards.add(new CharacterCard(House.TARGARYEN, "Daenerys"));
+		allBoardCards.add(new CharacterCard(House.TARGARYEN, "Aegon 1"));
+		allBoardCards.add(new CharacterCard(House.TARGARYEN, "Viserys"));
+
+		// 4 Baratheon cards
+		allBoardCards.add(new CharacterCard(House.BARATHEON, "Renly"));
+		allBoardCards.add(new CharacterCard(House.BARATHEON, "Shireen"));
+		allBoardCards.add(new CharacterCard(House.BARATHEON, "Stannis"));
+		allBoardCards.add(new CharacterCard(House.BARATHEON, "Robert"));
+
+		// 3 Tyrell cards
+		allBoardCards.add(new CharacterCard(House.TYRELL, "Garlan"));
+		allBoardCards.add(new CharacterCard(House.TYRELL, "Margaery"));
+		allBoardCards.add(new CharacterCard(House.TYRELL, "Olenna"));
+
+		// 2 Tully cards
+		allBoardCards.add(new CharacterCard(House.TULLY, "Edmure"));
+		allBoardCards.add(new CharacterCard(House.TULLY, "Hoster"));
+
+		// & last but not least - Varys
+		allBoardCards.add(new VarysCard("Varys"));
+
+		return allBoardCards;
 	}
 }

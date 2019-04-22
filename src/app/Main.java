@@ -1,4 +1,4 @@
-package game;
+package app;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,7 +19,13 @@ public class Main {
 
 		System.out.println("Game set up...");
 
-		createGameComponents();
+		Game game = new Game();
+		game.initializeGame();
+		
+		
+		// test
+		printBoard(game.getBoard());
+		
 
 		long endTime = System.nanoTime();
 		System.out.println("\n\nGame set up took " + (endTime - startTime) / 1_000_000_000.0 + " seconds.");
@@ -31,8 +37,8 @@ public class Main {
 		VarysCard vc = createVarysCard();
 		ArrayList<BannerToken> bt = createBannerTokens();
 		Board b = createBoard();
-		ArrayList<Card> c = shuffleCards(createCharacterCards(), vc);
-		b = populateBoard(b, c);
+		// ArrayList<Card> c = shuffleCards(createCharacterCards(), vc);
+		// b = populateBoard(b, c);
 		
 		printHouseDecks(hd);
 		printVarysCard(vc);
@@ -40,61 +46,7 @@ public class Main {
 		printBoard(b);
 	}
 
-	static ArrayList<CharacterCard> createCharacterCards() {
-
-		ArrayList<CharacterCard> allCharacterCards = new ArrayList<CharacterCard>(35);
-
-		// 8 Stark cards
-		allCharacterCards.add(new CharacterCard(House.STARK, "Arya"));
-		allCharacterCards.add(new CharacterCard(House.STARK, "Bran"));
-		allCharacterCards.add(new CharacterCard(House.STARK, "Carlyn"));
-		allCharacterCards.add(new CharacterCard(House.STARK, "Eddard"));
-		allCharacterCards.add(new CharacterCard(House.STARK, "Lyanna"));
-		allCharacterCards.add(new CharacterCard(House.STARK, "Rickon"));
-		allCharacterCards.add(new CharacterCard(House.STARK, "Robb"));
-		allCharacterCards.add(new CharacterCard(House.STARK, "Sansa"));
-
-		// 7 Greyjoy cards
-		allCharacterCards.add(new CharacterCard(House.GREYJOY, "Aeron"));
-		allCharacterCards.add(new CharacterCard(House.GREYJOY, "Asha"));
-		allCharacterCards.add(new CharacterCard(House.GREYJOY, "Balon"));
-		allCharacterCards.add(new CharacterCard(House.GREYJOY, "Euron"));
-		allCharacterCards.add(new CharacterCard(House.GREYJOY, "Rodrik"));
-		allCharacterCards.add(new CharacterCard(House.GREYJOY, "Theon"));
-		allCharacterCards.add(new CharacterCard(House.GREYJOY, "Victarion"));
-
-		// 6 Lannister cards
-		allCharacterCards.add(new CharacterCard(House.LANNISTER, "Cersei"));
-		allCharacterCards.add(new CharacterCard(House.LANNISTER, "Jaime"));
-		allCharacterCards.add(new CharacterCard(House.LANNISTER, "Joffrey"));
-		allCharacterCards.add(new CharacterCard(House.LANNISTER, "Kevan"));
-		allCharacterCards.add(new CharacterCard(House.LANNISTER, "Tyrion"));
-		allCharacterCards.add(new CharacterCard(House.LANNISTER, "Tywin"));
-
-		// 5 Targaryen cards
-		allCharacterCards.add(new CharacterCard(House.TARGARYEN, "Aegon 1"));
-		allCharacterCards.add(new CharacterCard(House.TARGARYEN, "Aerys"));
-		allCharacterCards.add(new CharacterCard(House.TARGARYEN, "Daenerys"));
-		allCharacterCards.add(new CharacterCard(House.TARGARYEN, "Aegon 1"));
-		allCharacterCards.add(new CharacterCard(House.TARGARYEN, "Viserys"));
-
-		// 4 Baratheon cards
-		allCharacterCards.add(new CharacterCard(House.BARATHEON, "Renly"));
-		allCharacterCards.add(new CharacterCard(House.BARATHEON, "Shireen"));
-		allCharacterCards.add(new CharacterCard(House.BARATHEON, "Stannis"));
-		allCharacterCards.add(new CharacterCard(House.BARATHEON, "Robert"));
-
-		// 3 Tyrell cards
-		allCharacterCards.add(new CharacterCard(House.TYRELL, "Garlan"));
-		allCharacterCards.add(new CharacterCard(House.TYRELL, "Margaery"));
-		allCharacterCards.add(new CharacterCard(House.TYRELL, "Olenna"));
-
-		// 2 Tully cards
-		allCharacterCards.add(new CharacterCard(House.TULLY, "Edmure"));
-		allCharacterCards.add(new CharacterCard(House.TULLY, "Hoster"));
-
-		return allCharacterCards;
-	}
+	
 
 	static ArrayList<HouseDeck> createHouseDecks() {
 		HouseDeck stark = new HouseDeck(House.STARK, 7);
@@ -114,9 +66,9 @@ public class Main {
 		houseDecks.add(tyrell);
 		houseDecks.add(tully);
 
-		ArrayList<CharacterCard> allCharacterCards = createCharacterCards();
+		// ArrayList<CharacterCard> allCharacterCards = createCharacterCards();
 
-		for (CharacterCard cc : allCharacterCards) {
+		/*for (CharacterCard cc : allCharacterCards) {
 			if (cc.getHouse() == House.STARK) {
 				stark.getCards().add(cc);
 			} else if (cc.getHouse() == House.GREYJOY) {
@@ -132,7 +84,7 @@ public class Main {
 			} else if (cc.getHouse() == House.TULLY) {
 				tully.getCards().add(cc);
 			}
-		}
+		}*/
 
 		return houseDecks;
 	}
@@ -183,10 +135,9 @@ public class Main {
 
 	private static void printBoard(Board b) {
 		System.out.println("\nBoard info:");
-		System.out.println(b);
 		for (int i = 0; i < b.getRows(); i++) {	
 			for (int j = 0; j < b.getColumns(); j++) {
-				System.out.print(b.getCards()[i][j].getName() + " | ");
+				System.out.print(b.getCards()[i][j] + " | ");
 			}
 			System.out.println();
 		}

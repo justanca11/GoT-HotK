@@ -1,5 +1,7 @@
 package components.elements.cards;
 
+import java.util.ArrayList;
+
 import components.elements.House;
 import components.elements.behaviour.Arrangeable;
 
@@ -25,4 +27,6 @@ public class CharacterCard extends Card implements Arrangeable {
 	public String toString() {
 		return super.getName() + " " + house.toString() + " is at position " + "(" + getX() + "," + getY() + ")";
 	}
+	
+	
 }
