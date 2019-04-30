@@ -1,17 +1,5 @@
 package app;
 
-import static org.junit.Assert.assertEquals;
-
-import java.util.ArrayList;
-
-import org.junit.Test;
-
-import components.elements.House;
-import components.elements.banners.BannerToken;
-import components.elements.board.Board;
-import components.elements.cards.Card;
-import components.elements.decks.HouseDeck;
-
 public class MainTest {
 	/*@Test
 	// TODO: refactor into proper unit tests etc

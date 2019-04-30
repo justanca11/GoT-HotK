@@ -2,14 +2,12 @@ package app;
 
 import java.util.ArrayList;
 
-import components.elements.House;
 import components.elements.board.Board;
-import components.elements.cards.Card;
-import components.elements.cards.CharacterCard;
-import components.elements.cards.VarysCard;
+import components.player.Player;
 
 public class Game {
 	private Board board;
+	private ArrayList<Player> players;
 
 	public Board getBoard() {
 		return board;
@@ -19,9 +17,18 @@ public class Game {
 		this.board = board;
 	}
 
-	public void initializeGame() {
-		Board board = new Board(6,6);
+	public ArrayList<Player> getPlayers() {
+		return players;
+	}
+
+	public void initializeGame(int playerNo) {
+		Board board = new Board(6, 6);
 		board.initializeBoard();
 		this.board = board;
+		players = new ArrayList<Player>(playerNo);
+		for (int i = 1; i <= playerNo; i++) {
+			players.add(new Player(i));
+		}
 	}
+	
 }

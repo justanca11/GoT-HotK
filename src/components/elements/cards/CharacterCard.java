@@ -1,7 +1,5 @@
 package components.elements.cards;
 
-import java.util.ArrayList;
-
 import components.elements.House;
 import components.elements.behaviour.Arrangeable;
 
