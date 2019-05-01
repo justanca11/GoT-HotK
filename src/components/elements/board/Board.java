@@ -12,7 +12,12 @@ public class Board {
 	private int rows;
 	private int columns;
 	private Card[][] cards;
+	private VarysCard varys;
 	
+	public VarysCard getVarys() {
+		return varys;
+	}
+
 	// on board house deck sizes
 	private int starkCards;
 	private int greyjoyCards;
@@ -201,7 +206,10 @@ public class Board {
 		tullyCards = 2;
 
 		// & last but not least - Varys
-		allBoardCards.add(new VarysCard("Varys"));
+		VarysCard varys = new VarysCard("Varys");
+		allBoardCards.add(varys);
+		this.varys = varys;
+		
 
 		return allBoardCards;
 	}

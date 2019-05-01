@@ -29,6 +29,7 @@ public class Game {
 		for (int i = 1; i <= playerNo; i++) {
 			players.add(new Player(i));
 		}
+		players.get(0).doTurn(board);
 	}
 	
 }

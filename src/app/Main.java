@@ -16,9 +16,9 @@ public class Main {
 		
 		
 		// test
-		printBoard(game.getBoard());
+		/*printBoard(game.getBoard());
 		System.out.println();
-		System.out.println(game.getPlayers());
+		System.out.println(game.getPlayers());*/
 		
 
 		long endTime = System.nanoTime();
@@ -27,7 +27,7 @@ public class Main {
 
 
 
-	private static void printBoard(Board b) {
+	public static void printBoard(Board b) {
 		System.out.println("\nBoard info:");
 		for (int i = 0; i < b.getRows(); i++) {	
 			for (int j = 0; j < b.getColumns(); j++) {
