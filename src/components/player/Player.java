@@ -16,7 +16,7 @@ public class Player {
 	private int starkCards = 0;
 	private int greyjoyCards = 0;
 	private int lannisterCards = 0;
-	private int targayrenCards = 0;
+	private int targaryenCards = 0;
 	private int baratheonCards = 0;
 	private int tyrellCards = 0;
 	private int tullyCards = 0;
@@ -53,12 +53,12 @@ public class Player {
 		this.lannisterCards = lannisterCards;
 	}
 
-	public int getTargayrenCards() {
-		return targayrenCards;
+	public int getTargarenCards() {
+		return targaryenCards;
 	}
 
 	public void setTargayrenCards(int targayrenCards) {
-		this.targayrenCards = targayrenCards;
+		this.targaryenCards = targayrenCards;
 	}
 
 	public int getBaratheonCards() {
@@ -109,13 +109,15 @@ public class Player {
 		System.out.println(v);
 		System.out.println();
 
+		String houseString = null;
+
 		// 1.1. choose house
 		House house = null;
 		while (house == null) {
 			System.out.println("Choose house [STARK, GREYJOY, LANNISTER, TARGARYEN, BARATHEON, TYRELL, TULLY]: ");
 
 			Scanner scanner = new Scanner(System.in);
-			String houseString = scanner.nextLine();
+			houseString = scanner.nextLine();
 
 			System.out.println("House: " + houseString);
 			// 1.2. check if house is valid
@@ -161,6 +163,36 @@ public class Player {
 							if (((CharacterCard) (cards[i][vy])).getHouse() == house) {
 								System.out.println("Taking " + cards[i][vy].getName());
 								cards[i][vy] = null;
+								switch (houseString.toUpperCase()) {
+								case "STARK":
+									b.setStarkCards(b.getStarkCards() - 1);
+									this.starkCards++;
+									break;
+								case "GREYJOY":
+									b.setGreyjoyCards(b.getGreyjoyCards() - 1);
+									this.greyjoyCards++;
+									break;
+								case "LANNISTER":
+									b.setLannisterCards(b.getLannisterCards() - 1);
+									this.lannisterCards++;
+									break;
+								case "TARGARYEN":
+									b.setTargaryenCards(b.getTargaryenCards() - 1);
+									this.targaryenCards++;
+									break;
+								case "BARATHEON":
+									b.setBaratheonCards(b.getBaratheonCards() - 1);
+									this.baratheonCards++;
+									break;
+								case "TYRELL":
+									b.setTyrellCards(b.getTyrellCards() - 1);
+									this.tyrellCards++;
+									break;
+								case "TULLY":
+									b.setTullyCards(b.getTullyCards() - 1);
+									this.tullyCards++;
+									break;
+								}
 							}
 						}
 					} else {
@@ -174,6 +206,36 @@ public class Player {
 							if (((CharacterCard) (cards[vx][i])).getHouse() == house) {
 								System.out.println("Taking " + cards[vx][i].getName());
 								cards[vx][i] = null;
+								switch (houseString.toUpperCase()) {
+								case "STARK":
+									b.setStarkCards(b.getStarkCards() - 1);
+									this.starkCards++;
+									break;
+								case "GREYJOY":
+									b.setGreyjoyCards(b.getGreyjoyCards() - 1);
+									this.greyjoyCards++;
+									break;
+								case "LANNISTER":
+									b.setLannisterCards(b.getLannisterCards() - 1);
+									this.lannisterCards++;
+									break;
+								case "TARGARYEN":
+									b.setTargaryenCards(b.getTargaryenCards() - 1);
+									this.targaryenCards++;
+									break;
+								case "BARATHEON":
+									b.setBaratheonCards(b.getBaratheonCards() - 1);
+									this.baratheonCards++;
+									break;
+								case "TYRELL":
+									b.setTyrellCards(b.getTyrellCards() - 1);
+									this.tyrellCards++;
+									break;
+								case "TULLY":
+									b.setTullyCards(b.getTullyCards() - 1);
+									this.tullyCards++;
+									break;
+								}
 							}
 						}
 					} else {
@@ -187,6 +249,36 @@ public class Player {
 							if (((CharacterCard) (cards[i][vy])).getHouse() == house) {
 								System.out.println("Taking " + cards[i][vy].getName());
 								cards[i][vy] = null;
+								switch (houseString.toUpperCase()) {
+								case "STARK":
+									b.setStarkCards(b.getStarkCards() - 1);
+									this.starkCards++;
+									break;
+								case "GREYJOY":
+									b.setGreyjoyCards(b.getGreyjoyCards() - 1);
+									this.greyjoyCards++;
+									break;
+								case "LANNISTER":
+									b.setLannisterCards(b.getLannisterCards() - 1);
+									this.lannisterCards++;
+									break;
+								case "TARGARYEN":
+									b.setTargaryenCards(b.getTargaryenCards() - 1);
+									this.targaryenCards++;
+									break;
+								case "BARATHEON":
+									b.setBaratheonCards(b.getBaratheonCards() - 1);
+									this.baratheonCards++;
+									break;
+								case "TYRELL":
+									b.setTyrellCards(b.getTyrellCards() - 1);
+									this.tyrellCards++;
+									break;
+								case "TULLY":
+									b.setTullyCards(b.getTullyCards() - 1);
+									this.tullyCards++;
+									break;
+								}
 							}
 						}
 					} else {
@@ -200,6 +292,36 @@ public class Player {
 							if (((CharacterCard) (cards[vx][i])).getHouse() == house) {
 								System.out.println("Taking " + cards[vx][i].getName());
 								cards[vx][i] = null;
+								switch (houseString.toUpperCase()) {
+								case "STARK":
+									b.setStarkCards(b.getStarkCards() - 1);
+									this.starkCards++;
+									break;
+								case "GREYJOY":
+									b.setGreyjoyCards(b.getGreyjoyCards() - 1);
+									this.greyjoyCards++;
+									break;
+								case "LANNISTER":
+									b.setLannisterCards(b.getLannisterCards() - 1);
+									this.lannisterCards++;
+									break;
+								case "TARGARYEN":
+									b.setTargaryenCards(b.getTargaryenCards() - 1);
+									this.targaryenCards++;
+									break;
+								case "BARATHEON":
+									b.setBaratheonCards(b.getBaratheonCards() - 1);
+									this.baratheonCards++;
+									break;
+								case "TYRELL":
+									b.setTyrellCards(b.getTyrellCards() - 1);
+									this.tyrellCards++;
+									break;
+								case "TULLY":
+									b.setTullyCards(b.getTullyCards() - 1);
+									this.tullyCards++;
+									break;
+								}
 							}
 						}
 					} else {
@@ -222,5 +344,19 @@ public class Player {
 
 		// show curr board after taking
 		Main.printBoard(b);
+		
+		System.out.println();
+		printEachDeckCards();
+		
+	}
+
+	private void printEachDeckCards() {
+		System.out.println("Stark cards of player " + number + ": " + starkCards);
+		System.out.println("Greyjoy cards of player " + number + ": " + greyjoyCards);
+		System.out.println("Lannister cards of player " + number + ": " + lannisterCards);
+		System.out.println("Targaryen cards of player " + number + ": " + targaryenCards);
+		System.out.println("Baratheon cards of player " + number + ": " + baratheonCards);
+		System.out.println("Tyrell cards of player " + number + ": " + tyrellCards);
+		System.out.println("Tully cards of player " + number + ": " + tullyCards);
 	}
 }

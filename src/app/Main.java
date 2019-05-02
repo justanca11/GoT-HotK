@@ -22,7 +22,7 @@ public class Main {
 		
 
 		long endTime = System.nanoTime();
-		System.out.println("\n\nGame set up took " + (endTime - startTime) / 1_000_000_000.0 + " seconds.");
+		System.out.println("\n\nGame run took " + (endTime - startTime) / 1_000_000_000.0 + " seconds.");
 	}
 
 
