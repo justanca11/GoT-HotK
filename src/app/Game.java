@@ -29,7 +29,16 @@ public class Game {
 		for (int i = 1; i <= playerNo; i++) {
 			players.add(new Player(i));
 		}
-		players.get(0).doTurn(board);
+		int j = 0;
+		while (this.board.getCards().length != 0) {
+			players.get(j).doTurn(board);
+			if (j == 0) {
+				j = 1;
+			} else {
+				j = 0;
+			}
+		}
+
 	}
-	
+
 }

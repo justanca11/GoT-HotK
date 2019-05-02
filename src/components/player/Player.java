@@ -102,6 +102,8 @@ public class Player {
 		UP, RIGHT, DOWN, LEFT
 	}
 
+	static Scanner scanner = new Scanner(System.in);
+	
 	public void doTurn(Board b) {
 		// show curr board
 		Main.printBoard(b);
@@ -116,8 +118,10 @@ public class Player {
 		while (house == null) {
 			System.out.println("Choose house [STARK, GREYJOY, LANNISTER, TARGARYEN, BARATHEON, TYRELL, TULLY]: ");
 
-			Scanner scanner = new Scanner(System.in);
-			houseString = scanner.nextLine();
+			//scanner = new Scanner(System.in);
+			//if (scanner.hasNextLine()) {
+				houseString = scanner.nextLine();
+			//}
 
 			System.out.println("House: " + houseString);
 			// 1.2. check if house is valid
@@ -140,8 +144,11 @@ public class Player {
 
 			System.out.println("Choose direction [UP, RIGHT, DOWN, LEFT]: ");
 
-			Scanner scanner = new Scanner(System.in);
-			String directionString = scanner.nextLine();
+			String directionString = null;
+			//scanner = new Scanner(System.in);
+			//if (scanner.hasNextLine()) {
+				directionString = scanner.nextLine();
+			//}
 
 			System.out.println("Direction: " + directionString);
 			// 2.2 check if direction is valid + 3. move varys together + 4. "grab"(for now
@@ -149,7 +156,7 @@ public class Player {
 
 			try {
 				direction = Direction.valueOf(directionString.toUpperCase());
-				scanner.close();
+				//scanner.close();
 
 				int vx = v.getX();
 				int vy = v.getY();
@@ -163,6 +170,7 @@ public class Player {
 							if (((CharacterCard) (cards[i][vy])).getHouse() == house) {
 								System.out.println("Taking " + cards[i][vy].getName());
 								cards[i][vy] = null;
+								v.setX(0);
 								switch (houseString.toUpperCase()) {
 								case "STARK":
 									b.setStarkCards(b.getStarkCards() - 1);
@@ -206,6 +214,7 @@ public class Player {
 							if (((CharacterCard) (cards[vx][i])).getHouse() == house) {
 								System.out.println("Taking " + cards[vx][i].getName());
 								cards[vx][i] = null;
+								v.setY(5);
 								switch (houseString.toUpperCase()) {
 								case "STARK":
 									b.setStarkCards(b.getStarkCards() - 1);
@@ -249,6 +258,7 @@ public class Player {
 							if (((CharacterCard) (cards[i][vy])).getHouse() == house) {
 								System.out.println("Taking " + cards[i][vy].getName());
 								cards[i][vy] = null;
+								v.setX(5);
 								switch (houseString.toUpperCase()) {
 								case "STARK":
 									b.setStarkCards(b.getStarkCards() - 1);
@@ -292,6 +302,7 @@ public class Player {
 							if (((CharacterCard) (cards[vx][i])).getHouse() == house) {
 								System.out.println("Taking " + cards[vx][i].getName());
 								cards[vx][i] = null;
+								v.setY(0);
 								switch (houseString.toUpperCase()) {
 								case "STARK":
 									b.setStarkCards(b.getStarkCards() - 1);
@@ -344,10 +355,10 @@ public class Player {
 
 		// show curr board after taking
 		Main.printBoard(b);
-		
+
 		System.out.println();
 		printEachDeckCards();
-		
+
 	}
 
 	private void printEachDeckCards() {
