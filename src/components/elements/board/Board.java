@@ -213,4 +213,30 @@ public class Board {
 
 		return allBoardCards;
 	}
+	
+	public void updateHouseDecksSizes(String houseString) {
+		switch (houseString.toUpperCase()) {
+		case "STARK":
+			this.starkCards--;
+			break;
+		case "GREYJOY":
+			this.greyjoyCards--;
+			break;
+		case "LANNISTER":
+			this.lannisterCards--;
+			break;
+		case "TARGARYEN":
+			this.targaryenCards--;
+			break;
+		case "BARATHEON":
+			this.baratheonCards--;
+			break;
+		case "TYRELL":
+			this.tyrellCards--;
+			break;
+		case "TULLY":
+			this.tullyCards--;
+			break;
+		}
+	}
 }

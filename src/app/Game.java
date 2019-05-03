@@ -29,6 +29,8 @@ public class Game {
 		for (int i = 1; i <= playerNo; i++) {
 			players.add(new Player(i));
 		}
+
+		// game loop
 		int j = 0;
 		while (this.board.getStarkCards() + this.board.getTargaryenCards() + this.board.getTullyCards()
 				+ this.board.getTyrellCards() + this.board.getGreyjoyCards() + this.board.getBaratheonCards()

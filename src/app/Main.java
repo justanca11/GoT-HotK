@@ -1,6 +1,11 @@
 package app;
 
+import java.util.Scanner;
+
+import components.elements.House;
 import components.elements.board.Board;
+import components.player.Player.Direction;
+import interaction.ConsoleInteraction;
 
 
 public class Main {
@@ -13,6 +18,8 @@ public class Main {
 
 		Game game = new Game();
 		game.initializeGame(2);
+		
+		//Scanner scanner = new Scanner(System.in);
 		
 		
 		// test
