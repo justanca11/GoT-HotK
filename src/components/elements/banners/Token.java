@@ -1,6 +1,6 @@
 package components.elements.banners;
 
-import components.elements.behaviour.Assignable;
+import components.behaviour.Assignable;
 
 public class Token implements Assignable {
 

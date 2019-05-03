@@ -1,6 +1,6 @@
 package components.elements.cards;
 
-import components.elements.behaviour.Assignable;
+import components.behaviour.Assignable;
 
 public class CompanionCard extends Card implements Assignable {
 	public CompanionCard(String name) {

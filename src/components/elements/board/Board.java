@@ -3,17 +3,17 @@ package components.elements.board;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import components.elements.House;
 import components.elements.cards.Card;
 import components.elements.cards.CharacterCard;
 import components.elements.cards.VarysCard;
+import util.enums.House;
 
 public class Board {
 	private int rows;
 	private int columns;
 	private Card[][] cards;
 	private VarysCard varys;
-	
+
 	public VarysCard getVarys() {
 		return varys;
 	}
@@ -50,8 +50,6 @@ public class Board {
 	/*
 	 * public void setColumns(int columns) { this.columns = columns; }
 	 */
-	
-	
 
 	public Board(int rows, int columns) {
 		super();
@@ -209,11 +207,10 @@ public class Board {
 		VarysCard varys = new VarysCard("Varys");
 		allBoardCards.add(varys);
 		this.varys = varys;
-		
 
 		return allBoardCards;
 	}
-	
+
 	public void updateHouseDeckSize(House house) {
 		switch (house) {
 		case STARK:
@@ -237,6 +234,10 @@ public class Board {
 		case TULLY:
 			this.tullyCards--;
 			break;
+		default:
+			// not reached
+			System.out.println(
+					"That is not a valid house, please choose between houses Stark, Grejoy, Lannister, Targaryen, Baratheon, Tyrell and Tully (not case sensitive). ");
 		}
 	}
 }

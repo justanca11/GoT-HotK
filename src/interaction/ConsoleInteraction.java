@@ -2,8 +2,8 @@ package interaction;
 
 import java.util.Scanner;
 
-import components.elements.House;
-import components.player.Player.Direction;
+import util.enums.Direction;
+import util.enums.House;
 
 // TODO: rename?
 public class ConsoleInteraction {
@@ -41,7 +41,7 @@ public class ConsoleInteraction {
 			} catch (IllegalArgumentException e) {
 				// e.printStackTrace();
 				System.out.println(directionString
-						+ " is not a valid direction, please pick between UP, RIGHT, DOWN and LEFT (not case sensitive).");
+						+ " is not a valid direction, please choose between UP, RIGHT, DOWN and LEFT (not case sensitive).");
 			}
 
 		}
@@ -61,12 +61,12 @@ public class ConsoleInteraction {
 				cellNo = Integer.parseInt(cellNoString);
 			} catch (NumberFormatException e) {
 				// e.printStackTrace();
-				System.out.println("Please choose a number between 0 and 5.");
+				System.out.println("That is not valid input. Please choose a number between 0 and 5.");
 			}
 			// validate user input
 			if (cellNo != -2 && (cellNo < 0 || cellNo > 5)) {
 				cellNo = -2;
-				System.out.println("Please choose a number between 0 and 5.");
+				System.out.println("That is not valid input. Please choose a number between 0 and 5.");
 			}
 		}
 		return cellNo;

@@ -3,13 +3,11 @@ package components.player;
 import java.util.Scanner;
 
 import app.Main;
-import components.elements.House;
 import components.elements.board.Board;
-import components.elements.cards.Card;
-import components.elements.cards.CharacterCard;
 import components.elements.cards.VarysCard;
-import components.player.Player.Direction;
 import interaction.ConsoleInteraction;
+import util.enums.Direction;
+import util.enums.House;
 
 public class Player {
 	private int number = 1;
@@ -100,10 +98,6 @@ public class Player {
 		return "Player " + number;
 	}
 
-	public enum Direction {
-		UP, RIGHT, DOWN, LEFT
-	}
-
 	static Scanner scanner = new Scanner(System.in);
 
 	public void doTurn(Board b) {
@@ -124,7 +118,7 @@ public class Player {
 		if (v.isLegalMove(direction, cellNo, b.getCards(), house)) {
 			System.out.println("Legal move");
 			// 3. move varys and grab the cards and update the deck sizes
-			v.move(direction, cellNo, b, house, this);
+			v.move(this, direction, cellNo, b, house);
 			// 6. check if player needs to get sth (banner/companion) / lose sth
 			// 7. check if player uses sth (???)
 		} else {
@@ -132,7 +126,7 @@ public class Player {
 		}
 
 		// show curr board after grab
-		Main.printBoard(b);
+		// Main.printBoard(b);
 
 		System.out.println();
 		printEachDeckCards();
@@ -171,6 +165,10 @@ public class Player {
 		case TULLY:
 			this.tullyCards++;
 			break;
+		default:
+			// not reached
+			System.out.println(
+					"That is not a valid house, please choose between houses Stark, Grejoy, Lannister, Targaryen, Baratheon, Tyrell and Tully (not case sensitive). ");
 		}
 	}
 }

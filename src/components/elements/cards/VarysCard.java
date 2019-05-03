@@ -1,10 +1,10 @@
 package components.elements.cards;
 
-import components.elements.House;
-import components.elements.behaviour.Movable;
+import components.behaviour.Movable;
 import components.elements.board.Board;
 import components.player.Player;
-import components.player.Player.Direction;
+import util.enums.Direction;
+import util.enums.House;
 
 public class VarysCard extends Card implements Movable {
 
@@ -13,10 +13,6 @@ public class VarysCard extends Card implements Movable {
 	}
 
 	@Override
-	public String toString() {
-		return super.getName() + " is at position " + "(" + getX() + "," + getY() + ").";
-	}
-
 	public boolean isLegalMove(Direction direction, int cellNo, Card[][] boardCards, House house) {
 		switch (direction) {
 		case UP:
@@ -50,7 +46,8 @@ public class VarysCard extends Card implements Movable {
 		return true;
 	}
 
-	public void move(Direction direction, int cellNo, Board board, House house, Player player) {
+	@Override
+	public void move(Player player, Direction direction, int cellNo, Board board, House house) {
 		Card[][] boardCards = board.getCards();
 
 		// empties Varys start position
@@ -63,7 +60,8 @@ public class VarysCard extends Card implements Movable {
 				// checks if the is of the chosen house
 				if (boardCards[i][this.getY()] != null
 						&& ((CharacterCard) (boardCards[i][this.getY()])).getHouse() == house) {
-					// if it is then it's removed from there TODO: move it to player pile, for now just remove
+					// if it is then it's removed from there TODO: move it to player pile, for now
+					// just remove
 					boardCards[i][this.getY()] = null;
 					// update chosen house deck size for the player who moved Varys
 					player.updateHouseDeckSize(house);
@@ -109,11 +107,18 @@ public class VarysCard extends Card implements Movable {
 			this.setY(cellNo);
 			break;
 		default:
+			// not reached
 			System.out.println(
 					"That is not a valid direction, please pick between UP, RIGHT, DOWN and LEFT (not case sensitive).");
 		}
 
-		// actually moves Varys to the new pos
+		// actually moves Varys to the new position
 		boardCards[this.getX()][this.getY()] = this;
 	}
+
+	@Override
+	public String toString() {
+		return super.getName() + " is at position " + "(" + getX() + "," + getY() + ").";
+	}
+
 }
