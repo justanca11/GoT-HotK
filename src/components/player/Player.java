@@ -168,192 +168,211 @@ public class Player {
 				switch (direction) {
 				case UP:
 					if (vx > 0) {
-						System.out.println("Moving u");
-						for (int i = vx - 1; i >= cell; i--) {
-							if (cards[i][vy] != null && ((CharacterCard) (cards[i][vy])).getHouse() == house) {
-								System.out.println("Taking " + cards[i][vy].getName());
-								cards[i][vy] = null;
-								v.setX(0);
-								switch (houseString.toUpperCase()) {
-								case "STARK":
-									b.setStarkCards(b.getStarkCards() - 1);
-									this.starkCards++;
-									break;
-								case "GREYJOY":
-									b.setGreyjoyCards(b.getGreyjoyCards() - 1);
-									this.greyjoyCards++;
-									break;
-								case "LANNISTER":
-									b.setLannisterCards(b.getLannisterCards() - 1);
-									this.lannisterCards++;
-									break;
-								case "TARGARYEN":
-									b.setTargaryenCards(b.getTargaryenCards() - 1);
-									this.targaryenCards++;
-									break;
-								case "BARATHEON":
-									b.setBaratheonCards(b.getBaratheonCards() - 1);
-									this.baratheonCards++;
-									break;
-								case "TYRELL":
-									b.setTyrellCards(b.getTyrellCards() - 1);
-									this.tyrellCards++;
-									break;
-								case "TULLY":
-									b.setTullyCards(b.getTullyCards() - 1);
-									this.tullyCards++;
-									break;
+
+						// Checks if Varys can be moved there
+						if (cards[cell][vy] != null && ((CharacterCard) (cards[cell][vy])).getHouse() == house) {
+							System.out.println("Moving u");
+							for (int i = vx - 1; i >= cell; i--) {
+								if (cards[i][vy] != null && ((CharacterCard) (cards[i][vy])).getHouse() == house) {
+									System.out.println("Taking " + cards[i][vy].getName());
+									cards[i][vy] = null;
+									v.setX(0);
+									switch (houseString.toUpperCase()) {
+									case "STARK":
+										b.setStarkCards(b.getStarkCards() - 1);
+										this.starkCards++;
+										break;
+									case "GREYJOY":
+										b.setGreyjoyCards(b.getGreyjoyCards() - 1);
+										this.greyjoyCards++;
+										break;
+									case "LANNISTER":
+										b.setLannisterCards(b.getLannisterCards() - 1);
+										this.lannisterCards++;
+										break;
+									case "TARGARYEN":
+										b.setTargaryenCards(b.getTargaryenCards() - 1);
+										this.targaryenCards++;
+										break;
+									case "BARATHEON":
+										b.setBaratheonCards(b.getBaratheonCards() - 1);
+										this.baratheonCards++;
+										break;
+									case "TYRELL":
+										b.setTyrellCards(b.getTyrellCards() - 1);
+										this.tyrellCards++;
+										break;
+									case "TULLY":
+										b.setTullyCards(b.getTullyCards() - 1);
+										this.tullyCards++;
+										break;
+									}
 								}
 							}
+							// Really moves Varys
+							v.setX(cell);
+							cards[cell][vy] = v;
+							cards[vx][vy] = null;
+						} else {
+							System.out.println("Varys can't be moved there, please choose a different stop cell:");
 						}
-						// Really moves Varys
-						v.setX(cell);
-						cards[cell][vy] = v;
-						cards[vx][vy] = null;
 					} else {
 						System.out.println("Can't move up");
 					}
 					break;
 				case RIGHT:
 					if (vy < 5) {
-						System.out.println("Moving r");
-						for (int i = vy + 1; i <= cell; i++) {
-							if (cards[vx][i] != null && ((CharacterCard) (cards[vx][i])).getHouse() == house) {
-								System.out.println("Taking " + cards[vx][i].getName());
-								cards[vx][i] = null;
-								v.setY(5);
-								switch (houseString.toUpperCase()) {
-								case "STARK":
-									b.setStarkCards(b.getStarkCards() - 1);
-									this.starkCards++;
-									break;
-								case "GREYJOY":
-									b.setGreyjoyCards(b.getGreyjoyCards() - 1);
-									this.greyjoyCards++;
-									break;
-								case "LANNISTER":
-									b.setLannisterCards(b.getLannisterCards() - 1);
-									this.lannisterCards++;
-									break;
-								case "TARGARYEN":
-									b.setTargaryenCards(b.getTargaryenCards() - 1);
-									this.targaryenCards++;
-									break;
-								case "BARATHEON":
-									b.setBaratheonCards(b.getBaratheonCards() - 1);
-									this.baratheonCards++;
-									break;
-								case "TYRELL":
-									b.setTyrellCards(b.getTyrellCards() - 1);
-									this.tyrellCards++;
-									break;
-								case "TULLY":
-									b.setTullyCards(b.getTullyCards() - 1);
-									this.tullyCards++;
-									break;
+						if (cards[vx][cell] != null && ((CharacterCard) (cards[vx][cell])).getHouse() == house) {
+							System.out.println("Moving r");
+
+							for (int i = vy + 1; i <= cell; i++) {
+								if (cards[vx][i] != null && ((CharacterCard) (cards[vx][i])).getHouse() == house) {
+									System.out.println("Taking " + cards[vx][i].getName());
+									cards[vx][i] = null;
+									v.setY(5);
+									switch (houseString.toUpperCase()) {
+									case "STARK":
+										b.setStarkCards(b.getStarkCards() - 1);
+										this.starkCards++;
+										break;
+									case "GREYJOY":
+										b.setGreyjoyCards(b.getGreyjoyCards() - 1);
+										this.greyjoyCards++;
+										break;
+									case "LANNISTER":
+										b.setLannisterCards(b.getLannisterCards() - 1);
+										this.lannisterCards++;
+										break;
+									case "TARGARYEN":
+										b.setTargaryenCards(b.getTargaryenCards() - 1);
+										this.targaryenCards++;
+										break;
+									case "BARATHEON":
+										b.setBaratheonCards(b.getBaratheonCards() - 1);
+										this.baratheonCards++;
+										break;
+									case "TYRELL":
+										b.setTyrellCards(b.getTyrellCards() - 1);
+										this.tyrellCards++;
+										break;
+									case "TULLY":
+										b.setTullyCards(b.getTullyCards() - 1);
+										this.tullyCards++;
+										break;
+									}
 								}
 							}
+							// Really moves Varys
+							v.setY(cell);
+							cards[vx][cell] = v;
+							cards[vx][vy] = null;
+						} else {
+							System.out.println("Varys can't be moved there, please choose a different stop cell:");
 						}
-						// Really moves Varys
-						v.setY(cell);
-						cards[vx][cell] = v;
-						cards[vx][vy] = null;
 					} else {
 						System.out.println("Can't move right");
 					}
 					break;
 				case DOWN:
 					if (vx < 5) {
-						System.out.println("Moving d");
-						for (int i = vx + 1; i <= cell; i++) {
-							if (cards[i][vy] != null && ((CharacterCard) (cards[i][vy])).getHouse() == house) {
-								System.out.println("Taking " + cards[i][vy].getName());
-								cards[i][vy] = null;
-								v.setX(5);
-								switch (houseString.toUpperCase()) {
-								case "STARK":
-									b.setStarkCards(b.getStarkCards() - 1);
-									this.starkCards++;
-									break;
-								case "GREYJOY":
-									b.setGreyjoyCards(b.getGreyjoyCards() - 1);
-									this.greyjoyCards++;
-									break;
-								case "LANNISTER":
-									b.setLannisterCards(b.getLannisterCards() - 1);
-									this.lannisterCards++;
-									break;
-								case "TARGARYEN":
-									b.setTargaryenCards(b.getTargaryenCards() - 1);
-									this.targaryenCards++;
-									break;
-								case "BARATHEON":
-									b.setBaratheonCards(b.getBaratheonCards() - 1);
-									this.baratheonCards++;
-									break;
-								case "TYRELL":
-									b.setTyrellCards(b.getTyrellCards() - 1);
-									this.tyrellCards++;
-									break;
-								case "TULLY":
-									b.setTullyCards(b.getTullyCards() - 1);
-									this.tullyCards++;
-									break;
+						if (cards[cell][vy] != null && ((CharacterCard) (cards[cell][vy])).getHouse() == house) {
+							System.out.println("Moving d");
+							for (int i = vx + 1; i <= cell; i++) {
+								if (cards[i][vy] != null && ((CharacterCard) (cards[i][vy])).getHouse() == house) {
+									System.out.println("Taking " + cards[i][vy].getName());
+									cards[i][vy] = null;
+									v.setX(5);
+									switch (houseString.toUpperCase()) {
+									case "STARK":
+										b.setStarkCards(b.getStarkCards() - 1);
+										this.starkCards++;
+										break;
+									case "GREYJOY":
+										b.setGreyjoyCards(b.getGreyjoyCards() - 1);
+										this.greyjoyCards++;
+										break;
+									case "LANNISTER":
+										b.setLannisterCards(b.getLannisterCards() - 1);
+										this.lannisterCards++;
+										break;
+									case "TARGARYEN":
+										b.setTargaryenCards(b.getTargaryenCards() - 1);
+										this.targaryenCards++;
+										break;
+									case "BARATHEON":
+										b.setBaratheonCards(b.getBaratheonCards() - 1);
+										this.baratheonCards++;
+										break;
+									case "TYRELL":
+										b.setTyrellCards(b.getTyrellCards() - 1);
+										this.tyrellCards++;
+										break;
+									case "TULLY":
+										b.setTullyCards(b.getTullyCards() - 1);
+										this.tullyCards++;
+										break;
+									}
 								}
 							}
+							// Really moves Varys
+							v.setX(cell);
+							cards[cell][vy] = v;
+							cards[vx][vy] = null;
+						} else {
+							System.out.println("Varys can't be moved there, please choose a different stop cell:");
 						}
-						// Really moves Varys
-						v.setX(cell);
-						cards[cell][vy] = v;
-						cards[vx][vy] = null;
 					} else {
 						System.out.println("Can't move down");
 					}
 					break;
 				case LEFT:
 					if (vy > 0) {
-						System.out.println("Moving l");
-						for (int i = vy - 1; i >= cell; i--) {
-							if (cards[vx][i] != null && ((CharacterCard) (cards[vx][i])).getHouse() == house) {
-								System.out.println("Taking " + cards[vx][i].getName());
-								cards[vx][i] = null;
-								v.setY(0);
-								switch (houseString.toUpperCase()) {
-								case "STARK":
-									b.setStarkCards(b.getStarkCards() - 1);
-									this.starkCards++;
-									break;
-								case "GREYJOY":
-									b.setGreyjoyCards(b.getGreyjoyCards() - 1);
-									this.greyjoyCards++;
-									break;
-								case "LANNISTER":
-									b.setLannisterCards(b.getLannisterCards() - 1);
-									this.lannisterCards++;
-									break;
-								case "TARGARYEN":
-									b.setTargaryenCards(b.getTargaryenCards() - 1);
-									this.targaryenCards++;
-									break;
-								case "BARATHEON":
-									b.setBaratheonCards(b.getBaratheonCards() - 1);
-									this.baratheonCards++;
-									break;
-								case "TYRELL":
-									b.setTyrellCards(b.getTyrellCards() - 1);
-									this.tyrellCards++;
-									break;
-								case "TULLY":
-									b.setTullyCards(b.getTullyCards() - 1);
-									this.tullyCards++;
-									break;
+						if (cards[vx][cell] != null && ((CharacterCard) (cards[vx][cell])).getHouse() == house) {
+							System.out.println("Moving l");
+							for (int i = vy - 1; i >= cell; i--) {
+								if (cards[vx][i] != null && ((CharacterCard) (cards[vx][i])).getHouse() == house) {
+									System.out.println("Taking " + cards[vx][i].getName());
+									cards[vx][i] = null;
+									v.setY(0);
+									switch (houseString.toUpperCase()) {
+									case "STARK":
+										b.setStarkCards(b.getStarkCards() - 1);
+										this.starkCards++;
+										break;
+									case "GREYJOY":
+										b.setGreyjoyCards(b.getGreyjoyCards() - 1);
+										this.greyjoyCards++;
+										break;
+									case "LANNISTER":
+										b.setLannisterCards(b.getLannisterCards() - 1);
+										this.lannisterCards++;
+										break;
+									case "TARGARYEN":
+										b.setTargaryenCards(b.getTargaryenCards() - 1);
+										this.targaryenCards++;
+										break;
+									case "BARATHEON":
+										b.setBaratheonCards(b.getBaratheonCards() - 1);
+										this.baratheonCards++;
+										break;
+									case "TYRELL":
+										b.setTyrellCards(b.getTyrellCards() - 1);
+										this.tyrellCards++;
+										break;
+									case "TULLY":
+										b.setTullyCards(b.getTullyCards() - 1);
+										this.tullyCards++;
+										break;
+									}
 								}
 							}
+							// Really moves Varys
+							v.setY(cell);
+							cards[vx][cell] = v;
+							cards[vx][vy] = null;
+						} else {
+							System.out.println("Varys can't be moved there, please choose a different stop cell:");
 						}
-						// Really moves Varys
-						v.setY(cell);
-						cards[vx][cell] = v;
-						cards[vx][vy] = null;
 					} else {
 						System.out.println("Can't move left");
 					}
