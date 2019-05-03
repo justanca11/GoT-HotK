@@ -152,7 +152,7 @@ public class Board {
 		// 8 Stark cards
 		allBoardCards.add(new CharacterCard(House.STARK, "Arya"));
 		allBoardCards.add(new CharacterCard(House.STARK, "Bran"));
-		allBoardCards.add(new CharacterCard(House.STARK, "Carlyn"));
+		allBoardCards.add(new CharacterCard(House.STARK, "Catlyn"));
 		allBoardCards.add(new CharacterCard(House.STARK, "Eddard"));
 		allBoardCards.add(new CharacterCard(House.STARK, "Lyanna"));
 		allBoardCards.add(new CharacterCard(House.STARK, "Rickon"));

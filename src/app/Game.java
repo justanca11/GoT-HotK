@@ -30,7 +30,9 @@ public class Game {
 			players.add(new Player(i));
 		}
 		int j = 0;
-		while (this.board.getCards().length != 0) {
+		while (this.board.getStarkCards() + this.board.getTargaryenCards() + this.board.getTullyCards()
+				+ this.board.getTyrellCards() + this.board.getGreyjoyCards() + this.board.getBaratheonCards()
+				+ this.board.getLannisterCards() > 0) {
 			players.get(j).doTurn(board);
 			if (j == 0) {
 				j = 1;

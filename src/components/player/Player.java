@@ -103,7 +103,7 @@ public class Player {
 	}
 
 	static Scanner scanner = new Scanner(System.in);
-	
+
 	public void doTurn(Board b) {
 		// show curr board
 		Main.printBoard(b);
@@ -118,10 +118,10 @@ public class Player {
 		while (house == null) {
 			System.out.println("Choose house [STARK, GREYJOY, LANNISTER, TARGARYEN, BARATHEON, TYRELL, TULLY]: ");
 
-			//scanner = new Scanner(System.in);
-			//if (scanner.hasNextLine()) {
-				houseString = scanner.nextLine();
-			//}
+			// scanner = new Scanner(System.in);
+			// if (scanner.hasNextLine()) {
+			houseString = scanner.nextLine();
+			// }
 
 			System.out.println("House: " + houseString);
 			// 1.2. check if house is valid
@@ -145,10 +145,13 @@ public class Player {
 			System.out.println("Choose direction [UP, RIGHT, DOWN, LEFT]: ");
 
 			String directionString = null;
-			//scanner = new Scanner(System.in);
-			//if (scanner.hasNextLine()) {
-				directionString = scanner.nextLine();
-			//}
+			// scanner = new Scanner(System.in);
+			// if (scanner.hasNextLine()) {
+			directionString = scanner.nextLine();
+			// }
+
+			System.out.println("Choose stop cell: ");
+			int cell = scanner.nextInt();
 
 			System.out.println("Direction: " + directionString);
 			// 2.2 check if direction is valid + 3. move varys together + 4. "grab"(for now
@@ -156,7 +159,7 @@ public class Player {
 
 			try {
 				direction = Direction.valueOf(directionString.toUpperCase());
-				//scanner.close();
+				// scanner.close();
 
 				int vx = v.getX();
 				int vy = v.getY();
@@ -166,8 +169,8 @@ public class Player {
 				case UP:
 					if (vx > 0) {
 						System.out.println("Moving u");
-						for (int i = vx - 1; i >= 0; i--) {
-							if (((CharacterCard) (cards[i][vy])).getHouse() == house) {
+						for (int i = vx - 1; i >= cell; i--) {
+							if (cards[i][vy] != null && ((CharacterCard) (cards[i][vy])).getHouse() == house) {
 								System.out.println("Taking " + cards[i][vy].getName());
 								cards[i][vy] = null;
 								v.setX(0);
@@ -203,6 +206,10 @@ public class Player {
 								}
 							}
 						}
+						// Really moves Varys
+						v.setX(cell);
+						cards[cell][vy] = v;
+						cards[vx][vy] = null;
 					} else {
 						System.out.println("Can't move up");
 					}
@@ -210,8 +217,8 @@ public class Player {
 				case RIGHT:
 					if (vy < 5) {
 						System.out.println("Moving r");
-						for (int i = vy + 1; i <= 5; i++) {
-							if (((CharacterCard) (cards[vx][i])).getHouse() == house) {
+						for (int i = vy + 1; i <= cell; i++) {
+							if (cards[vx][i] != null && ((CharacterCard) (cards[vx][i])).getHouse() == house) {
 								System.out.println("Taking " + cards[vx][i].getName());
 								cards[vx][i] = null;
 								v.setY(5);
@@ -247,6 +254,10 @@ public class Player {
 								}
 							}
 						}
+						// Really moves Varys
+						v.setY(cell);
+						cards[vx][cell] = v;
+						cards[vx][vy] = null;
 					} else {
 						System.out.println("Can't move right");
 					}
@@ -254,8 +265,8 @@ public class Player {
 				case DOWN:
 					if (vx < 5) {
 						System.out.println("Moving d");
-						for (int i = vx + 1; i <= 5; i++) {
-							if (((CharacterCard) (cards[i][vy])).getHouse() == house) {
+						for (int i = vx + 1; i <= cell; i++) {
+							if (cards[i][vy] != null && ((CharacterCard) (cards[i][vy])).getHouse() == house) {
 								System.out.println("Taking " + cards[i][vy].getName());
 								cards[i][vy] = null;
 								v.setX(5);
@@ -291,6 +302,10 @@ public class Player {
 								}
 							}
 						}
+						// Really moves Varys
+						v.setX(cell);
+						cards[cell][vy] = v;
+						cards[vx][vy] = null;
 					} else {
 						System.out.println("Can't move down");
 					}
@@ -298,8 +313,8 @@ public class Player {
 				case LEFT:
 					if (vy > 0) {
 						System.out.println("Moving l");
-						for (int i = vy - 1; i >= 0; i--) {
-							if (((CharacterCard) (cards[vx][i])).getHouse() == house) {
+						for (int i = vy - 1; i >= cell; i--) {
+							if (cards[vx][i] != null && ((CharacterCard) (cards[vx][i])).getHouse() == house) {
 								System.out.println("Taking " + cards[vx][i].getName());
 								cards[vx][i] = null;
 								v.setY(0);
@@ -335,6 +350,10 @@ public class Player {
 								}
 							}
 						}
+						// Really moves Varys
+						v.setY(cell);
+						cards[vx][cell] = v;
+						cards[vx][vy] = null;
 					} else {
 						System.out.println("Can't move left");
 					}
