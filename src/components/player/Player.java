@@ -113,7 +113,6 @@ public class Player {
 
 		System.out.println("\n" + v);
 
-
 		// 1.1. choose house
 		House house = ConsoleInteraction.promptChooseHouse(scanner);
 		// 1.2. choose direction
@@ -125,10 +124,12 @@ public class Player {
 		if (v.isLegalMove(direction, cellNo, b.getCards(), house)) {
 			System.out.println("Legal move");
 			// 3. move varys and grab the cards and update the deck sizes
-			v.move(direction, cellNo, b.getCards(), house, this, b);
+			v.move(direction, cellNo, b, house, this);
 			// 6. check if player needs to get sth (banner/companion) / lose sth
 			// 7. check if player uses sth (???)
-		}	
+		} else {
+			System.out.println("Illegal move, please retry.");
+		}
 
 		// show curr board after grab
 		Main.printBoard(b);
@@ -147,27 +148,27 @@ public class Player {
 		System.out.println("Tully cards of player " + number + ": " + tullyCards);
 	}
 
-	public void updateHouseDecksSizes(String houseString) {
-		switch (houseString.toUpperCase()) {
-		case "STARK":
+	public void updateHouseDeckSize(House house) {
+		switch (house) {
+		case STARK:
 			this.starkCards++;
 			break;
-		case "GREYJOY":
+		case GREYJOY:
 			this.greyjoyCards++;
 			break;
-		case "LANNISTER":
+		case LANNISTER:
 			this.lannisterCards++;
 			break;
-		case "TARGARYEN":
+		case TARGARYEN:
 			this.targaryenCards++;
 			break;
-		case "BARATHEON":
+		case BARATHEON:
 			this.baratheonCards++;
 			break;
-		case "TYRELL":
+		case TYRELL:
 			this.tyrellCards++;
 			break;
-		case "TULLY":
+		case TULLY:
 			this.tullyCards++;
 			break;
 		}

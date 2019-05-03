@@ -1,6 +1,5 @@
 package interaction;
 
-import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import components.elements.House;

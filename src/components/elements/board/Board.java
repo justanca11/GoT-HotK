@@ -214,27 +214,27 @@ public class Board {
 		return allBoardCards;
 	}
 	
-	public void updateHouseDecksSizes(String houseString) {
-		switch (houseString.toUpperCase()) {
-		case "STARK":
+	public void updateHouseDeckSize(House house) {
+		switch (house) {
+		case STARK:
 			this.starkCards--;
 			break;
-		case "GREYJOY":
+		case GREYJOY:
 			this.greyjoyCards--;
 			break;
-		case "LANNISTER":
+		case LANNISTER:
 			this.lannisterCards--;
 			break;
-		case "TARGARYEN":
+		case TARGARYEN:
 			this.targaryenCards--;
 			break;
-		case "BARATHEON":
+		case BARATHEON:
 			this.baratheonCards--;
 			break;
-		case "TYRELL":
+		case TYRELL:
 			this.tyrellCards--;
 			break;
-		case "TULLY":
+		case TULLY:
 			this.tullyCards--;
 			break;
 		}

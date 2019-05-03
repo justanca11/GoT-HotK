@@ -20,8 +20,7 @@ public class Main {
 		game.initializeGame(2);
 		
 		//Scanner scanner = new Scanner(System.in);
-		
-		
+			
 		// test
 		/*printBoard(game.getBoard());
 		System.out.println();
