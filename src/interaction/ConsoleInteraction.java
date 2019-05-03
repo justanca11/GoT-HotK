@@ -1,5 +1,6 @@
 package interaction;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import components.elements.House;
@@ -15,7 +16,7 @@ public class ConsoleInteraction {
 			System.out.println("\nChoose house (Stark, Grejoy, Lannister, Targaryen, Baratheon, Tyrell, Tully):");
 			// read user input
 			houseString = scanner.nextLine();
-			// check if the input represents a valid house
+			// validate user input
 			try {
 				house = House.valueOf(houseString.toUpperCase());
 			} catch (IllegalArgumentException e) {
@@ -35,7 +36,7 @@ public class ConsoleInteraction {
 			System.out.println("\nChoose direction (UP, RIGHT, DOWN, LEFT):");
 			// read user input
 			directionString = scanner.nextLine();
-			// check if the input represents a valid house
+			// validate user input
 			try {
 				direction = Direction.valueOf(directionString.toUpperCase());
 			} catch (IllegalArgumentException e) {
@@ -47,10 +48,28 @@ public class ConsoleInteraction {
 		}
 		return direction;
 	}
-	
-	// TODO: finish
+
+	// TODO: double check
 	public static int promptChooseStopCell(Scanner scanner) {
-		System.out.println("\nChoose stop cell (cell numbering starts at 0):");
-		return scanner.nextInt();
+		int cellNo = -2; // TODO: better initialisation? -2 would never exist obviously
+		String cellNoString = null;
+		while (cellNo == -2) {
+			// prompt user to choose stop cell
+			System.out.println("\nChoose stop cell (cell numbering starts at 0):");
+			// read user input
+			cellNoString = scanner.nextLine();
+			try {
+				cellNo = Integer.parseInt(cellNoString);
+			} catch (NumberFormatException e) {
+				// e.printStackTrace();
+				System.out.println("Please choose a number between 0 and 5.");
+			}
+			// validate user input
+			if (cellNo != -2 && (cellNo < 0 || cellNo > 5)) {
+				cellNo = -2;
+				System.out.println("Please choose a number between 0 and 5.");
+			}
+		}
+		return cellNo;
 	}
 }

@@ -71,15 +71,16 @@ public class VarysCard extends Card implements Movable {
 						&& ((CharacterCard) (boardCards[i][this.getY()])).getHouse() == house) {
 					System.out.println("Taking " + boardCards[i][this.getY()].getName());
 					boardCards[i][this.getY()] = null;
-					this.setX(0);
 					player.updateHouseDecksSizes(house.toString());
 					board.updateHouseDecksSizes(house.toString());
 				}
 			}
 			// Really moves Varys
+			boardCards[this.getX()][this.getY()] = null;
+			
 			this.setX(cellNo);
 			boardCards[cellNo][this.getY()] = this;
-			boardCards[this.getX()][this.getY()] = null;
+			
 			break;
 		case RIGHT:
 
@@ -87,15 +88,16 @@ public class VarysCard extends Card implements Movable {
 				if (boardCards[this.getX()][i] != null && ((CharacterCard) (boardCards[this.getX()][i])).getHouse() == house) {
 					System.out.println("Taking " + boardCards[this.getX()][i].getName());
 					boardCards[this.getX()][i] = null;
-					this.setY(5);
 					player.updateHouseDecksSizes(house.toString());
 					board.updateHouseDecksSizes(house.toString());
 				}
 			}
 			// Really moves Varys
+			boardCards[this.getX()][this.getY()] = null;
+			
 			this.setY(cellNo);
 			boardCards[this.getX()][cellNo] = this;
-			boardCards[this.getX()][this.getY()] = null;
+			
 
 			break;
 		case DOWN:
@@ -104,16 +106,18 @@ public class VarysCard extends Card implements Movable {
 				if (boardCards[i][this.getY()] != null && ((CharacterCard) (boardCards[i][this.getY()])).getHouse() == house) {
 					System.out.println("Taking " + boardCards[i][this.getY()].getName());
 					boardCards[i][this.getY()] = null;
-					this.setX(5);
 					player.updateHouseDecksSizes(house.toString());
 					board.updateHouseDecksSizes(house.toString());
 				}
 			}
 			// Really moves Varys
-			this.setX(cellNo);
-			boardCards[cellNo][this.getY()] = this;
 			boardCards[this.getX()][this.getY()] = null;
 
+			
+			
+			this.setX(cellNo);
+			boardCards[cellNo][this.getY()] = this;
+			
 			break;
 		case LEFT:
 
@@ -121,15 +125,17 @@ public class VarysCard extends Card implements Movable {
 				if (boardCards[this.getX()][i] != null && ((CharacterCard) (boardCards[this.getX()][i])).getHouse() == house) {
 					System.out.println("Taking " + boardCards[this.getX()][i].getName());
 					boardCards[this.getX()][i] = null;
-					this.setY(0);
 					player.updateHouseDecksSizes(house.toString());
 					board.updateHouseDecksSizes(house.toString());
 				}
 			}
 			// Really moves Varys
+			
+			boardCards[this.getX()][this.getY()] = null;
+			
 			this.setY(cellNo);
 			boardCards[this.getX()][cellNo] = this;
-			boardCards[this.getX()][this.getY()] = null;
+			
 
 			break;
 		default:
