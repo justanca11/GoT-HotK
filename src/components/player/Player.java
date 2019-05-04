@@ -1,7 +1,5 @@
 package components.player;
 
-import java.util.Scanner;
-
 import app.Main;
 import components.elements.board.Board;
 import components.elements.cards.VarysCard;
@@ -98,8 +96,6 @@ public class Player {
 		return "Player " + number;
 	}
 
-	static Scanner scanner = new Scanner(System.in);
-
 	public boolean doTurn(Board b) {
 		System.out.println("\nPlayer " + number + " is playing.");
 		
@@ -112,27 +108,25 @@ public class Player {
 		System.out.println("\n" + v);
 
 		// 1.1. choose house
-		House house = ConsoleInteraction.promptChooseHouse(scanner);
+		House house = ConsoleInteraction.promptChooseHouse();
 		// 1.2. choose direction
-		Direction direction = ConsoleInteraction.promptChooseDirection(scanner);
+		Direction direction = ConsoleInteraction.promptChooseDirection();
 		// 1.3 choose stop cell
-		int cellNo = ConsoleInteraction.promptChooseStopCell(scanner);
+		int cellNo = ConsoleInteraction.promptChooseStopCell();
 
 		// 2. check if move is legal
 		if (v.isLegalMove(direction, cellNo, b.getCards(), house)) {
-			System.out.println("Legal move");
-			// 3. move varys and grab the cards and update the deck sizes
+			
+			// 3. move varys and grab the card(s) and update the deck sizes
 			v.move(this, direction, cellNo, b, house);
-			// 6. check if player needs to get sth (banner/companion) / lose sth
-			// 7. check if player uses sth (???)
+			
+			// 4. check if player needs to get sth (banner/companion) / lose sth
+			// 5. check if player uses companion
 
 			isTurnComplete = true;
 		} else {
 			System.out.println("Illegal move, please retry.");
 		}
-
-		// show curr board after grab
-		// Main.printBoard(b);
 
 		System.out.println();
 		printEachDeckCards();

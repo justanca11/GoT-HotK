@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import components.elements.board.Board;
 import components.player.Player;
+import interaction.ConsoleInteraction;
 
 public class Game {
 	private Board board;
@@ -32,11 +33,9 @@ public class Game {
 
 		// game loop
 		int j = 0;
-		while (this.board.getStarkCards() + this.board.getTargaryenCards() + this.board.getTullyCards()
-				+ this.board.getTyrellCards() + this.board.getGreyjoyCards() + this.board.getBaratheonCards()
-				+ this.board.getLannisterCards() > 0) {
+		while (this.board.getVarys().isMovable(this.board.getCards()) == true) {
 			boolean isTurnComplete = players.get(j).doTurn(board);
-			// if the current player completed their turn, next one's turn
+			// if the current player completed their turn, next one's turn; otherwise the current player again
 			if (isTurnComplete == true) {
 				if (j == 0) {
 					j = 1;
@@ -45,7 +44,8 @@ public class Game {
 				}
 			}
 		}
-
+		System.out.println("Game end.");
+		ConsoleInteraction.scanner.close();
 	}
 
 }

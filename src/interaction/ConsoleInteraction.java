@@ -7,7 +7,9 @@ import util.enums.House;
 
 // TODO: rename?
 public class ConsoleInteraction {
-	public static House promptChooseHouse(Scanner scanner) {
+	public static Scanner scanner = new Scanner(System.in);
+	
+	public static House promptChooseHouse() {
 		House house = null;
 		String houseString = null;
 		while (house == null) {
@@ -27,7 +29,7 @@ public class ConsoleInteraction {
 		return house;
 	}
 
-	public static Direction promptChooseDirection(Scanner scanner) {
+	public static Direction promptChooseDirection() {
 		Direction direction = null;
 		String directionString = null;
 		while (direction == null) {
@@ -49,7 +51,7 @@ public class ConsoleInteraction {
 	}
 
 	// TODO: double check
-	public static int promptChooseStopCell(Scanner scanner) {
+	public static int promptChooseStopCell() {
 		int cellNo = -2; // TODO: better initialisation? -2 would never exist obviously
 		String cellNoString = null;
 		while (cellNo == -2) {
@@ -66,7 +68,7 @@ public class ConsoleInteraction {
 			// validate user input
 			if (cellNo != -2 && (cellNo < 0 || cellNo > 5)) {
 				cellNo = -2;
-				System.out.println("That is not valid input. Please choose a number between 0 and 5.");
+				System.out.println("That is not a valid stop cell. Please choose a number between 0 and 5.");
 			}
 		}
 		return cellNo;

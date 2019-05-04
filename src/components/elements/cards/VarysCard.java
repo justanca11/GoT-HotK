@@ -13,6 +13,23 @@ public class VarysCard extends Card implements Movable {
 	}
 
 	@Override
+	public boolean isMovable(Card[][] boardCards) {
+		for (int i = 0; i <= 5; i++) {
+			// if there is at least one card on the same column as Varys
+			if (i != this.getX() && boardCards[i][this.getY()] != null) {
+				return true;
+			}
+		}
+		for (int i = 0; i <= 5; i++) {
+			// if there is at least one card on the same line as Varys
+			if (i != this.getY() && boardCards[this.getX()][i] != null) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	@Override
 	public boolean isLegalMove(Direction direction, int cellNo, Card[][] boardCards, House house) {
 		switch (direction) {
 		case UP:
@@ -57,11 +74,11 @@ public class VarysCard extends Card implements Movable {
 		case UP:
 			// for all cards between Varys start and end coordinate
 			for (int i = this.getX() - 1; i >= cellNo; i--) {
-				// checks if the is of the chosen house
+				// check if is is of the chosen house
 				if (boardCards[i][this.getY()] != null
 						&& ((CharacterCard) (boardCards[i][this.getY()])).getHouse() == house) {
-					// if it is then it's removed from there TODO: move it to player pile, for now
-					// just remove
+					// if it is then it's removed from there
+					// TODO: move it to player pile, for now just remove
 					boardCards[i][this.getY()] = null;
 					// update chosen house deck size for the player who moved Varys
 					player.updateHouseDeckSize(house);
@@ -69,7 +86,7 @@ public class VarysCard extends Card implements Movable {
 					board.updateHouseDeckSize(house);
 				}
 			}
-			// updates Varys X to input stop X
+			// update Varys X to input stop X
 			this.setX(cellNo);
 			break;
 		case RIGHT:
@@ -81,7 +98,7 @@ public class VarysCard extends Card implements Movable {
 					board.updateHouseDeckSize(house);
 				}
 			}
-			// updates Varys Y to input stop Y
+			// update Varys Y to input stop Y
 			this.setY(cellNo);
 			break;
 		case DOWN:
@@ -112,7 +129,7 @@ public class VarysCard extends Card implements Movable {
 					"That is not a valid direction, please pick between UP, RIGHT, DOWN and LEFT (not case sensitive).");
 		}
 
-		// actually moves Varys to the new position
+		// actually move Varys to the new position
 		boardCards[this.getX()][this.getY()] = this;
 	}
 
@@ -120,5 +137,4 @@ public class VarysCard extends Card implements Movable {
 	public String toString() {
 		return super.getName() + " is at position " + "(" + getX() + "," + getY() + ").";
 	}
-
 }
