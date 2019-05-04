@@ -100,7 +100,11 @@ public class Player {
 
 	static Scanner scanner = new Scanner(System.in);
 
-	public void doTurn(Board b) {
+	public boolean doTurn(Board b) {
+		System.out.println("\nPlayer " + number + " is playing.");
+		
+		boolean isTurnComplete = false;
+
 		// show curr board
 		Main.printBoard(b);
 		VarysCard v = b.getVarys();
@@ -121,6 +125,8 @@ public class Player {
 			v.move(this, direction, cellNo, b, house);
 			// 6. check if player needs to get sth (banner/companion) / lose sth
 			// 7. check if player uses sth (???)
+
+			isTurnComplete = true;
 		} else {
 			System.out.println("Illegal move, please retry.");
 		}
@@ -130,6 +136,7 @@ public class Player {
 
 		System.out.println();
 		printEachDeckCards();
+		return isTurnComplete;
 	}
 
 	private void printEachDeckCards() {

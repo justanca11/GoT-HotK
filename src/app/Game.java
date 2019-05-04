@@ -35,11 +35,14 @@ public class Game {
 		while (this.board.getStarkCards() + this.board.getTargaryenCards() + this.board.getTullyCards()
 				+ this.board.getTyrellCards() + this.board.getGreyjoyCards() + this.board.getBaratheonCards()
 				+ this.board.getLannisterCards() > 0) {
-			players.get(j).doTurn(board);
-			if (j == 0) {
-				j = 1;
-			} else {
-				j = 0;
+			boolean isTurnComplete = players.get(j).doTurn(board);
+			// if the current player completed their turn, next one's turn
+			if (isTurnComplete == true) {
+				if (j == 0) {
+					j = 1;
+				} else {
+					j = 0;
+				}
 			}
 		}
 
