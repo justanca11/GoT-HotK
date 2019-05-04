@@ -39,17 +39,9 @@ public class Board {
 		return rows;
 	}
 
-	/*
-	 * public void setRows(int rows) { this.rows = rows; }
-	 */
-
 	public int getColumns() {
 		return columns;
 	}
-
-	/*
-	 * public void setColumns(int columns) { this.columns = columns; }
-	 */
 
 	public Board(int rows, int columns) {
 		super();
@@ -116,14 +108,6 @@ public class Board {
 
 	public void setTullyCards(int tullyCards) {
 		this.tullyCards = tullyCards;
-	}
-
-	public void setRows(int rows) {
-		this.rows = rows;
-	}
-
-	public void setColumns(int columns) {
-		this.columns = columns;
 	}
 
 	public void initializeBoard() {
