@@ -11,8 +11,8 @@ public class Main {
 
 		System.out.println("Game set up...");
 
-		// Game game = new Game();
-		// game.initializeGame(2);
+		Game game = new Game();
+		game.initializeGame(2);
 
 		/* Test console colours*/
 		System.out.println();

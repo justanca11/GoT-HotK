@@ -3,6 +3,7 @@ package components.elements.cards;
 import components.behaviour.Movable;
 import components.elements.board.Board;
 import components.player.Player;
+import util.ConsoleColours;
 import util.Direction;
 import util.House;
 
@@ -135,6 +136,7 @@ public class VarysCard extends Card implements Movable {
 
 	@Override
 	public String toString() {
-		return super.getName() + " is at position " + "(" + getX() + "," + getY() + ").";
+		return ConsoleColours.ANSI_PURPLE_VARYS + super.getName() + " is at position " + "(" + getX() + "," + getY()
+				+ ")." + ConsoleColours.ANSI_RESET;
 	}
 }
