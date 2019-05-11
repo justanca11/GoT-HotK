@@ -4,8 +4,8 @@ import app.Main;
 import components.elements.board.Board;
 import components.elements.cards.VarysCard;
 import interaction.ConsoleInteraction;
-import util.enums.Direction;
-import util.enums.House;
+import util.Direction;
+import util.House;
 
 public class Player {
 	private int number = 1;

@@ -1,6 +1,6 @@
 package components.elements.banners;
 
-import util.enums.House;
+import util.House;
 
 public class BannerToken extends Token {
 	private House house;

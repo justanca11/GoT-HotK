@@ -2,8 +2,8 @@ package interaction;
 
 import java.util.Scanner;
 
-import util.enums.Direction;
-import util.enums.House;
+import util.Direction;
+import util.House;
 
 // TODO: rename?
 public class ConsoleInteraction {

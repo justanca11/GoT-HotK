@@ -6,7 +6,7 @@ import java.util.Collections;
 import components.elements.cards.Card;
 import components.elements.cards.CharacterCard;
 import components.elements.cards.VarysCard;
-import util.enums.House;
+import util.House;
 
 public class Board {
 	private int rows;

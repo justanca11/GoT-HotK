@@ -1,7 +1,7 @@
 package components.elements.cards;
 
 import components.behaviour.Arrangeable;
-import util.enums.House;
+import util.House;
 
 public class CharacterCard extends Card implements Arrangeable {
 	private House house;

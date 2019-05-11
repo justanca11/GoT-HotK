@@ -3,8 +3,8 @@ package components.elements.cards;
 import components.behaviour.Movable;
 import components.elements.board.Board;
 import components.player.Player;
-import util.enums.Direction;
-import util.enums.House;
+import util.Direction;
+import util.House;
 
 public class VarysCard extends Card implements Movable {
 

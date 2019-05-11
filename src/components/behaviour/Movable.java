@@ -3,8 +3,8 @@ package components.behaviour;
 import components.elements.board.Board;
 import components.elements.cards.Card;
 import components.player.Player;
-import util.enums.Direction;
-import util.enums.House;
+import util.Direction;
+import util.House;
 
 public interface Movable {
 	boolean isMovable(Card[][] boardCards);
